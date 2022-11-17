@@ -59,7 +59,8 @@
         }
     </style>
 </head>
-
+ @using (Html.BeginForm("Create", "Application", FormMethod.Post, new { enctype = "multipart/form-data", @id = "start" }))
+ {
     <section class=" bg-image"
          style="background:linear-gradient(rgba(45,165,253,1) 3%, rgba(47,34,195,1) 100%);width:100%;height:200%;background-size:cover;">
         <div class="mask  align-items-center gradient-custom-3">
@@ -69,8 +70,7 @@
                         <div class="card-body p-5 ">
                             <h2 class="text-uppercase text-center mb-5" style="font-family:Times New Roman;font-weight: 900;">STUDENT DETAIL</h2>
                             <form id="myform">
-                            @using (Html.BeginForm("Create", "Application", FormMethod.Post, new { enctype = "multipart/form-data", @id = "start" }))
-                            {
+                           
                                 @Html.HiddenFor(m=>m.ID,new{@id="applicantid"})
                                 <div id="clear">
                                     <div class="col-md-6">
@@ -116,16 +116,16 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    
+                                    <div class="col" style="margin-top:20px;">
+                                    <button onclick="location.href='@Url.Action("List","Application")'" style="border-radius:15px;background:linear-gradient(rgba(45,165,253,1) 3%, rgba(47,34,195,1) 100%)">Back To List</button>
+                                </div>
                                     <div class="col mybutton" style="margin-top:20px;">
                                         <button id="clear" class="reset" type="button" name="reset" onclick="Clear()" style="border-radius:15px;background:linear-gradient(rgba(45,165,253,1) 3%, rgba(47,34,195,1) 100%)">Reset</button>
                                         <button id="button" style="border-radius:15px;background:linear-gradient(rgba(45,165,253,1) 3%, rgba(47,34,195,1) 100%)">Submit</button>
                                     </div>
                                 </div>
-                                }
-                                <div class="col" style="margin-top:20px;">
-                                    <button onclick="location.href='@Url.Action("List","Application")'" style="border-radius:15px;background:linear-gradient(rgba(45,165,253,1) 3%, rgba(47,34,195,1) 100%)">Back To List</button>
-                                </div>
+                                
+                                
                             </form>
                             
                         </div>
@@ -134,7 +134,7 @@
             </div>
         </div>
     </section>
-
+    }
 <script>
     $().ready(function () {
         $("#start").validate({
